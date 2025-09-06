@@ -1,14 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/style.css">
-    <title>Vite + TS</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <title>Pomodoro Timer</title>
   </head>
   <body>
     <div id="app"></div>
+    <div class="flex flex-col gap-5 justify-center items-center h-screen">
+      <div class="flex flex-col gap-5 justify-center items-center" id="container">
+        <span class="text-9xl" id="timer">00:00</span>
+        <div class="flex flex-row h-10 gap-5 w-full justify-between">
+          <form action="" class="flex-1 border">
+            <input
+              type="number"
+              name="work"
+              id="work-time"
+              placeholder="Work Time (minute)"
+              class="focus:ring-transparent focus:shadow-2xl transition duration-300 outline-none text-xl text-center h-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            />
+          </form>
+          <form action="" class="flex-1 border">
+            <input
+              type="number"
+              name="rest"
+              id="rest-time"
+              placeholder="Rest Time (minute)"
+              class="focus:ring-transparent focus:shadow-2xl transition duration-300 outline-none text-xl text-center h-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            />
+          </form>
+        </div>
+        <div class="flex flex-row gap-5 w-full justify-between items-center" id="button-container">
+          <button
+            type="button"
+            onclick=""
+            class="flex-1 text-5xl p-3 rounded-lg bg-blue-300"
+            id="button-start"
+          >
+            START
+          </button>
+          <button
+            type="button"
+            onclick=""
+            class="flex-1 text-5xl p-3 rounded-lg bg-red-500"
+            id="button-reset"
+          >
+            RESET
+          </button>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
