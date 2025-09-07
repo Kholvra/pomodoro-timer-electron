@@ -13,31 +13,35 @@
     />
     <title>Pomodoro Timer</title>
   </head>
-  <body>
+  <body class="overflow-none">
+    <img src="public/images/background.png" alt="" class="absolute z-10 size-full">
     <div id="app"></div>
     <div class="flex flex-col gap-5 justify-center items-center h-screen">
       <div
-        class="flex flex-col gap-5 justify-center items-center"
+        class="flex flex-col gap-5 z-50 justify-center items-center text-white"
         id="container"
       >
         <span class="text-9xl" id="timer">00:00</span>
-        <div class="flex flex-row h-10 gap-5 w-full justify-between">
-          <form action="" class="flex-1 border">
+        <div class="flex-1 flex flex-row h-10 gap-5 w-full justify-between">
+          <!-- form action for enter soon. -->
+          <form action="" class="flex-1 flex flex-col size-25">
+            <label for="">Work Time</label>
             <input
               type="number"
               name="work"
               id="work-time"
-              placeholder="Work Time (minute)"
-              class="focus:ring-transparent focus:shadow-2xl transition duration-300 outline-none text-xl text-center h-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              placeholder="In minute"
+              class="text-black bg-white rounded-lg focus:ring-transparent focus:shadow-2xl transition duration-300 outline-none text-3xl text-center h-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
           </form>
-          <form action="" class="flex-1 border">
+          <form action="" class="flex-1 flex flex-col size-25">
+            <label for="rest-time" class="self-end">Rest Time</label>
             <input
               type="number"
               name="rest"
               id="rest-time"
-              placeholder="Rest Time (minute)"
-              class="focus:ring-transparent focus:shadow-2xl transition duration-300 outline-none text-xl text-center h-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              placeholder="In minute"
+              class="text-black bg-white rounded-lg focus:ring-transparent focus:shadow-2xl transition duration-300 outline-none text-3xl text-center h-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
           </form>
         </div>
@@ -48,7 +52,7 @@
           <button
             type="button"
             onclick=""
-            class="flex-1 text-5xl p-3 rounded-lg bg-blue-300 cursor-pointer"
+            class="flex-1 text-5xl p-3 rounded-lg bg-yellow-400 cursor-pointer hover:shadow-lg active:shadow-none"
             id="button-start"
           >
             START
@@ -56,7 +60,7 @@
           <button
             type="button"
             onclick=""
-            class="flex-1 text-5xl p-3 rounded-lg bg-red-500 cursor-pointer"
+            class="flex-1 text-5xl p-3 rounded-lg bg-red-600 cursor-pointer hover:shadow-lg active:shadow-none"
             id="button-reset"
           >
             RESET
