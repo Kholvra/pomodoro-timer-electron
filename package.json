@@ -8,19 +8,41 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "start:electron": "electron ."
+    "start:electron": "electron .",
+    "build:electron": "npm run build && electron-builder"
   },
   "devDependencies": {
     "@types/node": "^24.3.1",
     "@types/node-notifier": "^8.0.5",
     "electron": "^38.0.0",
+    "electron-builder": "^26.0.12",
     "typescript": "~5.8.3",
-    "vite": "^7.1.2"
+    "vite": "^7.1.2",
+    "@tailwindcss/vite": "^4.1.13",
+    "tailwindcss": "^4.1.13"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.13",
     "date-fns": "^4.1.0",
-    "node-notifier": "^10.0.1",
-    "tailwindcss": "^4.1.13"
+    "node-notifier": "^10.0.1"
+  },
+  "build": {
+    "appId": "com.pomodoro.timer",
+    "productName": "Pomodoro Timer",
+    "linux": {
+      "target": "AppImage"
+    },
+    "asarUnpack": [
+      "**/node_modules/@tailwindcss/oxide-wasm32-wasi/**/*"
+    ],
+    "files": [
+      "dist/**/*",
+      "main.cjs",
+      "preload.js",
+      "package.json",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "output": "release"
+    }
   }
 }
