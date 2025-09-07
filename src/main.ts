@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+
 (function () {
   const inputWork = document.getElementById("work-time") as HTMLInputElement;
   const inputRest = document.getElementById("rest-time") as HTMLInputElement;
@@ -31,7 +32,7 @@ import { format } from "date-fns";
     }
   }
 
-  function timer(duration: number = 1) {
+  function timer(duration: number = 1, message: string) {
     return new Promise((resolve) => {
       const interval = setInterval(() => {
         const dateFromSecond = new Date(duration * 1000); //second to milisecond
@@ -44,6 +45,7 @@ import { format } from "date-fns";
           isWork = !isWork;
           clearInterval(interval);
           resolve("Timer Done");
+          notifyMe(message);
         }
         if (!isLoop) {
           clearInterval(interval);
@@ -59,7 +61,7 @@ import { format } from "date-fns";
   async function timerHandler() {
     const workTime = parseInt(inputWork.value) * 60;
     const restTime = parseInt(inputRest.value) * 60;
-    console.log(workTime + " dan " + restTime)
+    console.log(workTime + " dan " + restTime);
 
     if (workTime && restTime) {
       if (workTime > TIME_LIMIT && restTime > TIME_LIMIT) {
@@ -67,9 +69,9 @@ import { format } from "date-fns";
       }
       while (isLoop) {
         if (isWork) {
-          await timer(workTime);
+          await timer(workTime, "WORKING TIMEOUT");
         } else {
-          await timer(restTime);
+          await timer(restTime, "REST TIMEOUT");
         }
       }
     } else {
@@ -86,5 +88,10 @@ import { format } from "date-fns";
     alert(error);
     resetInput();
     isLoop = false;
+  }
+
+  function notifyMe(message: string) {
+    // use preload, send to main cjs
+    window.api.sendNotification(message);
   }
 })();

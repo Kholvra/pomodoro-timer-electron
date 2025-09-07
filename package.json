@@ -3,14 +3,17 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "main.cjs",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start:electron": "electron ."
   },
   "devDependencies": {
     "@types/node": "^24.3.1",
     "@types/node-notifier": "^8.0.5",
+    "electron": "^38.0.0",
     "typescript": "~5.8.3",
     "vite": "^7.1.2"
   },
