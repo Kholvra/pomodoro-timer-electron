@@ -9,6 +9,7 @@ import { format } from "date-fns";
 
   let isWork = true;
   const timeDisplay = document.getElementById("timer");
+  const statusNow = document.getElementById('status');
   const buttonContainer = document.getElementById("button-container");
   let isLoop = false;
 
@@ -33,6 +34,9 @@ import { format } from "date-fns";
   }
 
   function timer(duration: number = 1, message: string) {
+    if (statusNow){
+      statusNow.textContent = message;
+    }
     return new Promise((resolve) => {
       const interval = setInterval(() => {
         const dateFromSecond = new Date(duration * 1000); //second to milisecond
@@ -45,7 +49,7 @@ import { format } from "date-fns";
           isWork = !isWork;
           clearInterval(interval);
           resolve("Timer Done");
-          notifyMe(message);
+          notifyMe(message+" TIMEOUT");
         }
         if (!isLoop) {
           clearInterval(interval);
@@ -69,9 +73,9 @@ import { format } from "date-fns";
       }
       while (isLoop) {
         if (isWork) {
-          await timer(workTime, "WORKING TIMEOUT");
+          await timer(workTime, "WORKING");
         } else {
-          await timer(restTime, "REST TIMEOUT");
+          await timer(restTime, "REST");
         }
       }
     } else {
@@ -82,6 +86,9 @@ import { format } from "date-fns";
   function resetInput() {
     inputWork.value = "";
     inputRest.value = "";
+    if (statusNow){
+      statusNow.textContent= "";
+    }
   }
 
   function invalidInput(error: string) {
